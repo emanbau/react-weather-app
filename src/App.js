@@ -4,24 +4,27 @@ import {useState} from 'react';
 
 const api = {
   key: "5515f92d0e396ee349e24e2914d9d0a4",
-  base: "https://api.openweathermap.org/data/2.5/"
+  base: "http://api.openweathermap.org/data/2.5/"
 }
-
 
 
 function App() {
   const [query, setQuery] = useState('');
-  const [weather, setWeather] = useState({})
+  const [weather, setWeather] = useState({});
+
+  const apiTemplate = `${api.base}weather?q=${query}&APPID=${api.key}`
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=imperial&appid=${api.key}`)
+      fetch(apiTemplate)
         .then(response => response.json())
+        .catch(error => alert(error))
         .then(result => {
           setWeather(result);
           setQuery('');
           console.log(result);
-        });
+        })
+          
     }
   }
 
@@ -54,7 +57,7 @@ function App() {
             </div>
             <div className="weatherbox">
               <div className="temp">
-                {Math.round(weather.main.temp)}°F
+                {((Math.round(weather.main.temp) - 273.15) * (9 / 5) + 32).toFixed(0)}°F
               </div>
               <div className="weather">{weather.weather[0].main}</div>
             </div>
