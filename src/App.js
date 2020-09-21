@@ -15,7 +15,7 @@ function App() {
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch('${api.base}weather?q=${query}&units=imperial&appid=${api.key}')
+      fetch(`${api.base}weather?q=${query}&units=imperial&appid=${api.key}`)
         .then(response => response.json())
         .then(result => {
           setWeather(result);
@@ -37,7 +37,7 @@ function App() {
     let month = months[d.getMonth()];
     let year = d.getFullYear();
 
-    return '${day} ${date} ${month} ${year}'
+    return `${day} ${date} ${month} ${year}`
   }
 
   return (
