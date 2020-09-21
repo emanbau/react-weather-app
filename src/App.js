@@ -60,6 +60,17 @@ function App() {
                 {((Math.round(weather.main.temp) - 273.15) * (9 / 5) + 32).toFixed(0)}°F
               </div>
               <div className="weather">{weather.weather[0].main}</div>
+              <div className='weather-icon'>
+                <img src={(weather.weather[0].main === 'Thunderstorm') ? 'http://openweathermap.org/img/wn/11d@4x.png' 
+              : (weather.weather[0].main === 'Drizzle') ? 'http://openweathermap.org/img/wn/09d@4x.png' 
+              : (weather.weather[0].main === 'Rain') ? 'http://openweathermap.org/img/wn/10d@4x.png'
+              : (weather.weather[0].main === 'Snow') ? 'http://openweathermap.org/img/wn/13d@4x.png'
+              : (weather.weather[0].main === 'Clear') ? 'http://openweathermap.org/img/wn/01d@4x.png'
+              : (weather.weather[0].main === 'Clouds') ? 'http://openweathermap.org/img/wn/02d@4x.png'
+              : 'http://openweathermap.org/img/wn/50d@4x.png'
+            }
+            alt='icon' />
+              </div>
             </div>
           </div>
         ) : ('')}
