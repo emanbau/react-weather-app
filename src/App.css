@@ -7,10 +7,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'montseratt', sans-serif;
+  overflow: hidden;
 }
 
 .body {
-  height: 100%
+  height: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .app {
@@ -60,11 +65,21 @@
 
 .search-box .search-bar:focus {
   background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid #313131;
+}
+
+.search-box .search-bar:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid #313131;
+}
+
+input:focus, textarea:focus {
+  outline-offset: 0px;
+  outline: none;
 }
 
 .search-box .search-bar::placeholder {
   color: rgba(50, 50, 70, 0.75);
-
 }
 
 .location-box {
@@ -117,4 +132,9 @@
   font-weight: 700;
   text-align: center;
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+}
+
+.weather-icon {
+  filter: drop-shadow(3px 6px rgba(0, 0, 0, 0.2));
+  transform: scale(1.2);
 }
